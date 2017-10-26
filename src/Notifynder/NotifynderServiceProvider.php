@@ -31,6 +31,7 @@ class NotifynderServiceProvider extends ServiceProvider
         'AddStackIdToNotifications' => '2016_05_19_144531_add_stack_id_to_notifications',
         'UpdateVersion4NotificationsTable' => '2016_07_01_153156_update_version4_notifications_table',
         'DropVersion4UnusedTables' => '2016_11_02_193415_drop_version4_unused_tables',
+        'AddReadTimeColumnToNotificationTable' => '2017_10_26_144315_add_read_time_column_to_notification_table',
     ];
 
     /**
