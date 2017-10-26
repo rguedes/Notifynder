@@ -20,6 +20,7 @@ use Carbon\Carbon;
  * @property string $url
  * @property array $extra
  * @property string $expires_at
+ * @property string $read_at
  * @property int $stack_id
  */
 class Notification extends Model
@@ -37,6 +38,7 @@ class Notification extends Model
         'url',
         'extra',
         'expires_at',
+        'read_at',
         'stack_id',
     ];
 
@@ -145,7 +147,9 @@ class Notification extends Model
     public function read()
     {
         $carbon = Carbon::now();
-        return $this->update(['read' => 1, 'read_at', $carbon]);
+        if($this->read == 1)
+            return false;
+        return $this->update(['read' => 1, 'read_at' => $carbon]);
     }
 
     /**
@@ -153,7 +157,7 @@ class Notification extends Model
      */
     public function unread()
     {
-        return $this->update(['read' => 0]);
+        return $this->update(['read' => 0, 'read_at'=>null]);
     }
 
     /**
