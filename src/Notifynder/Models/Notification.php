@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Fenos\Notifynder\Parsers\NotificationParser;
 use Fenos\Notifynder\Builder\Notification as BuilderNotification;
+use Carbon\Carbon;
 
 /**
  * Class Notification.
@@ -143,7 +144,8 @@ class Notification extends Model
      */
     public function read()
     {
-        return $this->update(['read' => 1]);
+        $carbon = Carbon::now();
+        return $this->update(['read' => 1, 'read_at', $carbon]);
     }
 
     /**
